@@ -40,15 +40,9 @@ GET /names?names=Julia, Mary, Karim
 
 Response for 200 OK
 ```
-
+"Julia, Mary, Karim
 ```
-# Request:
 
-GET /
-
-# Expected response:
-
-Response for 404 Not Found
 ```
 
 ## 4. Encode as Tests Examples
@@ -64,22 +58,18 @@ describe Application do
 
   let(:app) { Application.new }
 
-  context "GET /" do
-    it 'returns 200 OK' do
-      # Assuming the post with id 1 exists.
-      response = get('/posts?id=1')
+  context 'GET /names' do
+      it 'returns 200 OK' do
+        response = get('/names')
 
-      expect(response.status).to eq(200)
-      # expect(response.body).to eq(expected_response)
-    end
+        expect(response.status).to eq(200)
+      end
+      it "returns the list of names" do
+        response = get('/names?names=Julia, Mary, Karim')
 
-    it 'returns 404 Not Found' do
-      response = get('/posts?id=276278')
-
-      expect(response.status).to eq(404)
-      # expect(response.body).to eq(expected_response)
-    end
-  end
+        expect(response.body).to eq "Julia, Mary, Karim"
+      end
+  end     
 end
 ```
 

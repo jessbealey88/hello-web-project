@@ -22,11 +22,15 @@ describe Application do
    end
 
    context 'GET /names' do
+      it 'returns 200 OK' do
+        response = get('/names')
+
+        expect(response.status).to eq(200)
+      end
       it "returns the list of names" do
         response = get('/names?names=Julia, Mary, Karim')
 
         expect(response.body).to eq "Julia, Mary, Karim"
       end
-
    end
 end
