@@ -15,9 +15,9 @@ describe Application do
       end
 
       it "returns hello message" do
-        response = get('/hello?name=Jess')
+        response = get('/hello')
 
-        expect(response.body).to eq "Hello Jess"
+        expect(response.body).to include ('<h1>Hello!</h1>')
       end
    end
 

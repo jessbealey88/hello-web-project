@@ -6,10 +6,10 @@ class Application < Sinatra::Base
         register Sinatra::Reloader
     end
 
-    get '/hello' do
-        name = params[:name]
 
-        return "Hello #{name}"
+    get '/hello' do
+
+        return erb(:index)
     end
 
     post '/submit' do
